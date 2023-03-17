@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Brendan Griffiths</title>
+    <meta http-equiv="refresh" content="0;URL='http://brendangriffiths.com/'" />    
+</head>
+<body>
+    <pre>brendangriffiths.com</pre>
+</body>
+</html>
+<!-- 
+
+IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx 
+
+Unfortunately, IE's logic isn't smart enough to detect that, say, the response was a tiny HTML page with a META Refresh pointed at a different page, meaning that the META Refresh won't work until you pad the HTML response with enough text to be deemed "non-terse."
+
+A common question from web developers is: What makes IE decide to show a friendly error page?
+
+The answer is that the server's response must meet two criteria:
+
+The HTTP Status code must be [400, 403, 404, 405, 406, 408, 409, 410, 500, 501, 505]
+The HTTP Response body's byte length must be shorter than a threshold value
+If the server's response meets both criteria, then IE will show its own Friendly HTTP Error page instead of the server's terse response.
+
+The byte length thresholds are stored in the registry in HKEY_LOCAL_MACHINE under the subkey \SOFTWARE\Microsoft\Internet Explorer\Main\ErrorThresholds. The default threshold is 256 bytes for the response codes [403, 405, 410] and 512 bytes for response codes [400, 404, 406, 408, 409, 500, 501, 505]. If the registry entry is missing for one of the status codes, its threshold defaults to 512 bytes.
+
+-->

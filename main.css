@@ -1,0 +1,147 @@
+body, html {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+  font-size: 0;
+  line-height: 0;
+  color: black;
+  overscroll-behavior: contain;
+  overflow: hidden;
+  touch-action: none;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+.stamping {
+     cursor: none;  
+}
+
+.stage {
+  font-size: 10vw;
+  line-height: 10vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.word, .drop {
+  position: fixed;
+  top:-20000px;
+  left:-20000px;
+  transform: translate(-50%,-50%);
+  white-space: nowrap;
+}
+
+.touch .word {
+  display: none;
+}
+
+.email-link {
+  color: black;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  line-height: 20px;
+  text-decoration: none;
+  padding: 20px 30px;
+  border: 2px solid black;
+  border-radius: 100px;
+  z-index: 10000;
+  background-color: white;
+  cursor: pointer;
+  display: block;
+}
+
+.email-link:hover {
+  background-color: black;
+  color: white;
+}
+
+.control-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+    display: block;
+  transition: opacity 600ms;
+    opacity: 0;
+  pointer-events: none;
+}
+
+.control-btn {
+  color: black;
+  text-align: center;
+  font-size: 40px;
+  line-height: 64px;
+  width: 64px;
+  height: 64px;
+  text-decoration: none;
+  padding: 0;
+  border: 2px solid black;
+  border-radius: 100%;
+  z-index: 10000;
+  background-color: white;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.control-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.touch .download {
+  display: none;
+}
+
+.reset {
+  will-change: transform;
+}
+
+.spinner {
+    animation:spin 600ms linear 1;
+    background-color: black;
+  color: white;
+}
+@keyframes spin { 
+    100% { 
+        transform:rotate(-360deg); 
+    } 
+}
+
+
+
+@media only screen and (max-width: 480px) {
+    .email-link {
+      font-size: 14px;
+      line-height: 14px;
+      padding: 14px 22px;
+      border: 1px solid black;
+      top: 14px;
+      right: 14px;
+    }
+    .control-panel {
+  bottom: 14px;
+  right: 14px;
+}
+
+    .control-btn {
+        width: 44px;
+        height: 44px;
+          font-size: 28px;
+  line-height: 44px;
+        border: 1px solid black;
+  margin-left: 7px;
+
+    }
+}
