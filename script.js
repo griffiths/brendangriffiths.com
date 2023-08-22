@@ -45,7 +45,9 @@ function resetWords() {
 }
 
 function stampWord(x,y,word) {
-    umami.track('hit', { stamp: [x, y, word] });
+    if (umami) {
+        umami.track('hit', { stamp: [x, y, word] });
+    }
     poster.push([x, y, word]);
     $(".stage").append("<div class='drop sizing' style='top:" + y + "px;left:" + x + "px'>" + word + "</div>");
 }
@@ -74,13 +76,17 @@ $(".stage").click(function(e) {
 $(".reset").click(function(e) {
     e.stopPropagation();
     resetWords();
-    umami.track('reset', { poster: [poster, [$(window).width(), $(window).height()]] });
+    if (umami) {
+        umami.track('reset', { poster: [poster, [$(window).width(), $(window).height()]] });
+    }
     poster = [];
 });
 
 $(".download").click(function(e) {
     e.stopPropagation();
-    umami.track('print', { poster: [poster, [$(window).width(), $(window).height()]] });
+    if (umami) {
+        umami.track('print', { poster: [poster, [$(window).width(), $(window).height()]] });
+    }
     var container = document.getElementById('output'); // full page 
             html2canvas(container).then(function(canvas) {
                 var link = document.createElement("a");
