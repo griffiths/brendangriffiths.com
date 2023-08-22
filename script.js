@@ -14,6 +14,7 @@ var currentWord = 0;
 var words = ["Brendan","Griffiths","is","a","graphic","designer","programmer","and","educator","based","in","New","York","City"];
 var typing = false;
 var done = false;
+var poster = [];
 $(".word").html(words[currentWord]);
 
 function resetWords() {
@@ -43,15 +44,21 @@ function resetWords() {
     })
 }
 
+function stampWord(x,y,word) {
+    umami.track('hit', { stamp: [x, y, word] });
+    poster.push([x, y, word]);
+    $(".stage").append("<div class='drop sizing' style='top:" + y + "px;left:" + x + "px'>" + word + "</div>");
+}
+
 $(".stage").click(function(e) {
     $("a").addClass("on");
     if (!done) {
         if (typing) {
-            $(".stage").append("<div class='drop sizing' style='top:" + e.clientY + "px;left:" + e.clientX + "px'>" + $(".word").html() + "</div>");
+            stampWord(e.clientX, e.clientY, $(".word").html());
             $(".word").html(words[currentWord]);
             typing = false;
         } else {
-            $(".stage").append("<div class='drop sizing' style='top:" + e.clientY + "px;left:" + e.clientX + "px'>" + words[currentWord] + "</div>");
+            stampWord(e.clientX, e.clientY, words[currentWord]);
             currentWord++;
             if (currentWord == words.length) {
                 done = true;
@@ -67,10 +74,13 @@ $(".stage").click(function(e) {
 $(".reset").click(function(e) {
     e.stopPropagation();
     resetWords();
+    umami.track('reset', { poster: [poster, [$(window).width(), $(window).height()]] });
+    poster = [];
 });
 
 $(".download").click(function(e) {
     e.stopPropagation();
+    umami.track('print', { poster: [poster, [$(window).width(), $(window).height()]] });
     var container = document.getElementById('output'); // full page 
             html2canvas(container).then(function(canvas) {
                 var link = document.createElement("a");
