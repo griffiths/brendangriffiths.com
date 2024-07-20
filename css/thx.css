@@ -110,94 +110,30 @@ html, body {
   padding: 0;
 }
 
-body {
-  padding: 60px 60px;
-}
 
-p {
+iframe {
+  width: 400px;
+  height: 4000px;
+  border: 0;
   margin: 0;
   padding: 0;
-  margin-bottom: 120px;
+  overflow:hidden;
+      animation-name: myclock;
+    animation-duration: 10s;
+    animation-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000);
+    animation-iteration-count: 1;
+    border-right: 1px solid red;
 }
 
-a {
-  color: #222;
+@keyframes myclock {
+    from {
+        width:2000px;
+    }
+    to {
+        width: 390px;
+    }
 }
 
-a:hover {
-  text-decoration: none;
-}
-
-@media only screen and (max-width: 1800px) {
-
-html, body {
-  font-size: 80px;
-  line-height: 80px;
-}
-
-body {
-  padding: 40px 40px;
-}
-
-p {
-  margin-bottom: 80px;
-}
-
-}
-
-
-@media only screen and (max-width: 1200px) {
-
-html, body {
-  font-size: 60px;
-  line-height: 60px;
-}
-
-body {
-  padding: 30px 30px;
-}
-
-p {
-  margin-bottom: 60px;
-}
-
-}
-
-@media only screen and (max-width: 800px) {
-
-html, body {
-  font-size: 42px;
-  line-height: 42px;
-}
-
-body {
-  padding: 30px 30px;
-}
-
-p {
-  margin-bottom: 42px;
-}
-
-}
-
-
-
-@media only screen and (max-width: 600px) {
-
-html, body {
-  font-size: 23px;
-  line-height: 24px;
-}
-
-body {
-  padding: 20px 20px;
-}
-
-p {
-  margin-bottom: 24px;
-}
-
-}
 
 
 /* ==========================================================================
